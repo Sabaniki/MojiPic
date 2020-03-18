@@ -1,6 +1,6 @@
 package controllers
 
-import infrastructure.twitter.TwitterAuthenticator
+import infrastructure.twitter.{TwitterAuthenticator, TwitterException}
 import javax.inject.Inject
 import play.api.Configuration
 import play.api.cache.SyncCacheApi
@@ -13,6 +13,19 @@ class OAuthController @Inject()(
     val cache: SyncCacheApi
 ) extends TwitterLoginController(cc) {
     val documentRootUrl: String = configuration.get[String]("mojipic.documentrooturl")
-    try {
+
+    def login = super.TwitterLoginAction { request =>
+        try {
+            val callbackUrl = documentRootUrl + routes.OAuthController.oauthCallback(None).url
+            val authenticationUrl = twitterAuthenticator.startAuthentication(request.sessionId, callbackUrl)
+            Redirect(authenticationUrl)
+        }
+        catch {
+            case e: TwitterException => BadRequest(e.getMessage)
+        }
     }
+
+    def logout() = play.mvc.Results.TODO
+
+    def oauthCallback(oauth_verifier: Option[String]) = play.mvc.Results.TODO
 }

@@ -8,11 +8,11 @@
 * argument is a `String` with the title of the page, the second
 * argument is an `Html` object containing the body of the page.
 *@
-@main("Welcome to Play") {
+@main("MojiPic") {　
     <nav class="light-blue lighten-4" role="navigation">
         <div class="nav-wrapper container">
             <a id="logo-container" href="#" class="brand-logo">
-                <img src="@routes.Assets.versioned("images/logo.png")">
+                <img src="@routes.Assets.versioned("images/logo.png")" alt="logo icon">
             </a>
             <ul class="right hide-on-med-and-down">
                 <li>
@@ -22,8 +22,7 @@
             </ul>
             <ul id="nav-mobile" class="side-nav">
                 <li>
-                    <a href="/login">Twitterでログイン</a>
-                    @* <a href="/login">Twitterでログアウト</a>*@
+                    <a href="/login">Twitterでログイン</a>   @* <a href="/login">Twitterでログアウト</a>*@
                 </li>
             </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse">
@@ -61,10 +60,12 @@
         <div id="picture-grid" class="row center"></div>
     </div>
 
-    <footer class="page-footer light-blue lighten-4">
+    <footer class="page-footer light-blue lighten-5">
         <div class="footer-copyright">
             <div class="container">
-                <a class="light-blue-text text-darken-3" href="http://www1.hst.titech.ac.jp/club/micon/index.html">いや、もう卒業したんですけどね…</a>
+                <a class="light-blue-text text-darken-3" href="http://www1.hst.titech.ac.jp/club/micon/index.html">
+                    いや、もう卒業したんですけどね…
+                </a>
             </div>
         </div>
     </footer>
